@@ -1,12 +1,14 @@
 package controllers;
 
+import models.Product;
+import play.api.http.NotImplementedHttpRequestHandler;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 public class Products extends Controller {
 
     public Result list(){
-        return ok("llegamos al listado de los productos");
+        return ok(Product.findAll().toString());
     }
 
     public Result newProduct(){
