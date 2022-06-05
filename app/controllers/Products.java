@@ -9,7 +9,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import javax.inject.Inject;
 import views.html.products.*;
-
 import java.util.ArrayList;
 
 public class Products extends Controller {

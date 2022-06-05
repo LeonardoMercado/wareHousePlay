@@ -6,10 +6,10 @@
     <h1>FORMULARIO DE PRODUCTO</h1>
     @helper.form(action = routes.Products.save()){
         <fieldset>
-            <legend>Product (@productForm("name").value())</legend>
-                @helper.inputText(productForm("ean"))
-                @helper.inputText(productForm("name"),'_label->"Name")
-                @helper.textarea(productForm("description"))
+            <legend>Producto @productForm("name").value.getOrElse("Nuevo")</legend>
+                @helper.inputText(productForm("ean"), '_label ->"Código EAN del Producto")
+                @helper.inputText(productForm("name"),'_label->"Nombre del Producto")
+                @helper.textarea(productForm("description"),'_label -> "Descripción del Producto")
         </fieldset>
         <input type="submit" class="btn btn-primary" value="Guardar">
         <a class="btn" href="@routes.Products.list()">Cancelar</a>
