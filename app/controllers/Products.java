@@ -9,4 +9,15 @@ public class Products extends Controller {
         return ok("llegamos al listado de los productos");
     }
 
+    public Result newProduct(){
+        return ok("llegamos a crear un nuevo producto");
+    }
+
+    public Result details(){
+        return ok("llegamos al detalle del producto");
+    }
+    
+    public Result save(){
+        return ok("llegamos a guardar el producto");
+    }
 }
