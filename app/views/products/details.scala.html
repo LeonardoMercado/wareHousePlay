@@ -7,9 +7,9 @@
     @helper.form(action = routes.Products.save()){
         <fieldset>
             <legend>Producto @productForm("name").value.getOrElse("Nuevo")</legend>
-                @helper.inputText(productForm("ean"), '_label ->"Código EAN del Producto")
-                @helper.inputText(productForm("name"),'_label->"Nombre del Producto")
-                @helper.textarea(productForm("description"),'_label -> "Descripción del Producto")
+                @helper.inputText(productForm("ean"),Symbol("_label")->"Código EAN del Producto")
+                @helper.inputText(productForm("name"),Symbol("_label")->"Nombre del Producto")
+                @helper.textarea(productForm("description"),Symbol("_label") -> "Descripción del Producto")
         </fieldset>
         <input type="submit" class="btn btn-primary" value="Guardar">
         <a class="btn" href="@routes.Products.list()">Cancelar</a>

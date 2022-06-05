@@ -6,10 +6,14 @@ import play.i18n.MessagesApi;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import javax.inject.Inject;
 import views.html.products.*;
 import java.util.ArrayList;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Products extends Controller {
     private final Form<Product> productoForm;
@@ -17,7 +21,7 @@ public class Products extends Controller {
     public final static ArrayList<Lang> idioma = new ArrayList<Lang>(){{
         add(Lang.forCode("es"));
     }};
-
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Inject
     public Products(FormFactory formFactory, MessagesApi messagesApi) {
         this.productoForm = formFactory.form(Product.class);
@@ -36,7 +40,14 @@ public class Products extends Controller {
         return ok("llegamos al detalle del producto");
     }
 
-    public Result save(){
-        return ok("llegamos a guardar el producto");
+    public Result save(Http.Request request){
+        Form<Product> boundForm = productoForm.bindFromRequest(request);
+        if(boundForm.hasErrors()){
+            logger.error("error = {}",boundForm.errors());
+            return badRequest(details.render("Error",boundForm,messagesApi.preferred(idioma)));
+        }
+        Product product = boundForm.get();
+        product.save();
+        return ok(list.render("Produtcs added",Product.findAll()));
     }
 }

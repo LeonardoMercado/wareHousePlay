@@ -2,6 +2,9 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import play.data.validation.Constraints;
+
+import javax.validation.Constraint;
 
 /**
  * Clase para instanciar objetos tipo producto
@@ -21,7 +24,9 @@ public class Product {
         products.add(new Product("555555555555","Paperclips 5","Paperclips description 5"));
     }
     // De instancia:
+    @Constraints.Required
     private String ean;
+    @Constraints.Required
     private String name;
     private String description;
     //------------------------------------------------------------------------------------------------------
