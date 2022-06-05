@@ -13,10 +13,10 @@ public class Products extends Controller {
         return ok("llegamos a crear un nuevo producto");
     }
 
-    public Result details(){
+    public Result details(String ean){
         return ok("llegamos al detalle del producto");
     }
-    
+
     public Result save(){
         return ok("llegamos a guardar el producto");
     }
