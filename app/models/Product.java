@@ -56,11 +56,9 @@ public class Product {
         }
         return result;
     }
-
     public static boolean remove(Product product){
         return products.remove(product);
     }
-
     public void save(){
         products.remove(findByEan(this.ean));
         products.add(this);
