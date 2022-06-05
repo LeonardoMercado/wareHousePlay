@@ -1,0 +1,18 @@
+@(titlePage: String,productForm: Form[Product])(implicit messages: play.i18n.Messages)
+
+@import helper._
+
+@main(titlePage){
+    <h1>FORMULARIO DE PRODUCTO</h1>
+    @helper.form(action = routes.Products.save()){
+        <fieldset>
+            <legend>Product (@productForm("name").value())</legend>
+                @helper.inputText(productForm("ean"))
+                @helper.inputText(productForm("name"),'_label->"Name")
+                @helper.textarea(productForm("description"))
+        </fieldset>
+        <input type="submit" class="btn btn-primary" value="Guardar">
+        <a class="btn" href="@routes.Products.list()">Cancelar</a>
+    }
+
+}

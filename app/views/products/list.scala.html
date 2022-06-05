@@ -1,6 +1,7 @@
-@(products: List[Product])
+@(titlePage: String,
+  products: List[Product])
 
-@main("Products catalogue"){
+@main(titlePage){
     <h2>Nuestros productos:</h2>
     <table class="table table-striped table-hover">
         <thead class="text-center">
