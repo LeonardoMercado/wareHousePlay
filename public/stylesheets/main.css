@@ -1,13 +1,9 @@
-body{
-    background: black;
-}
-
-h1,
-h2,
-h3 {
-    color: white;
-}
-
-h3{
+#footer{
     text-align: center;
+    background: #565e64;
+    margin: 25px 0px 25px 0px;
+}
+#footer h3{
+    color: white;
+    padding: 15px;
 }
