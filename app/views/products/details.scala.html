@@ -4,6 +4,11 @@
 
 @main(titlePage){
     <h1>FORMULARIO DE PRODUCTO</h1>
+    @if(productForm.hasErrors()) {
+        <div class="alert alert-danger">
+            <p>Ocurrio un error al guardar el producto</p>
+        </div>
+    }
     @helper.form(action = routes.Products.save()){
         <fieldset>
             <legend>Producto @productForm("name").value.getOrElse("Nuevo")</legend>
