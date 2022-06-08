@@ -3,7 +3,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index()
+GET     /                           controllers.Products.list()
 GET     /hello                      controllers.HomeController.hello(name: String)
 
 # For project:
