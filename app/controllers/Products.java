@@ -21,6 +21,7 @@ public class Products extends Controller {
     public final static ArrayList<Lang> idioma = new ArrayList<Lang>(){{
         add(Lang.forCode("es"));
     }};
+    private  Http.Request myRequest;
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Inject
     public Products(FormFactory formFactory, MessagesApi messagesApi) {
@@ -34,7 +35,12 @@ public class Products extends Controller {
         return ok(details.render("Detalle del producto",productoForm, messagesApi.preferred(idioma)));
     }
     public Result details(String ean){
-        return ok("llegamos al detalle del producto");
+        Product producto = Product.findByEan(ean);
+        if(producto != null){
+            return ok(producto.toString());
+        }else{
+            return notFound(productNotFound.render(ean));
+        }
     }
     public Result save(Http.Request request){
         Form<Product> boundForm = productoForm.bindFromRequest(request);

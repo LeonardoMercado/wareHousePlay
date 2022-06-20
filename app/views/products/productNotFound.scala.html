@@ -1,0 +1,14 @@
+@(producto: String)
+
+@main("Error producto" + producto){
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center">
+            <h1 class="display-1 fw-bold">No se encontro el producto @producto</h1>
+            <p class="fs-3"> <span class="text-danger">Opps!</span> producto no encontrado.</p>
+            <p class="lead">
+               El producto que está buscando no existe.
+            </p>
+            <a href="/" class="btn btn-primary">Volver a la lista de productos</a>
+        </div>
+    </div>
+}
