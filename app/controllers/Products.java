@@ -54,4 +54,8 @@ public class Products extends Controller {
         Product.remove(product);
         return ok(list.render("Produtcs Catalogue",Product.findAll()));
     }
+
+    public Result todo(Http.Request request){
+        return status(NOT_IMPLEMENTED,views.html.defaultpages.todo.render(request.asScala()));
+    }
 }
