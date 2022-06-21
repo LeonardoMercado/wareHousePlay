@@ -9,12 +9,15 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import javax.inject.Inject;
+
+import play.mvc.With;
 import views.html.products.*;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@With(CatchAction.class)
 public class Products extends Controller {
     private final Form<Product> productoForm;
     private MessagesApi messagesApi;

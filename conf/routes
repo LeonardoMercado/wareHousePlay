@@ -3,14 +3,14 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.Products.list()
+GET     /                           controllers.HomeController.index()
 GET     /hello                      controllers.HomeController.hello(name: String)
-GET     /testTODO                   controllers.Products.todo(request: Request)
 
 # For project:
-GET     /products/                  controllers.Products.list()
+GET     /products                   controllers.Products.list()
 GET     /products/new               controllers.Products.newProduct()
 GET     /products/:ean              controllers.Products.details(ean: String)
+GET     /testTODO                   controllers.Products.todo(request: Request)
 + nocsrf
 POST    /products/                  controllers.Products.save(request: Request)
 + nocsrf
