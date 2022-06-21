@@ -8,10 +8,11 @@ public class HelloViewTest {
 
     @Test
     public void renderTemplate(){
+
         Content html = views.html.hello.render("Entrando por Testing");
         assertEquals("text/html",html.contentType());
-        assertEquals(true,html.body().toString().contains("hola"));
-        assert(html.body().toString().contentEquals("hola"));
+        assertEquals(true,html.body().toString().contains("Testing"));
+
     }
 
 }

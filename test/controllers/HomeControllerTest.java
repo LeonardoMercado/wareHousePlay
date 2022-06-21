@@ -2,6 +2,7 @@ package controllers;
 
 import org.junit.Test;
 import play.Application;
+import play.http.HttpEntity;
 import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -22,11 +23,23 @@ public class HomeControllerTest extends WithApplication {
     @Test
     public void testIndex() {
         Http.RequestBuilder request = new Http.RequestBuilder()
-                .method(GET)
-                .uri("/");
+                .method(GET);
 
         Result result = route(app, request);
-        assertEquals(OK, result.status());
+        assertEquals(Http.Status.SEE_OTHER, result.status());
+    }
+
+    @Test
+    public void saludo_correcto(){
+        String root = "/hello";
+        String parametroNombre = "name";
+        String parametroValue = "Leonardo";
+        String uri = root + "?" + parametroNombre + "=" + parametroValue;
+        Http.RequestBuilder request = new Http.RequestBuilder()
+                .method(GET)
+                .uri(uri);
+        Result result = route(app,request);
+        assertEquals(OK,result.status());
     }
 
 }

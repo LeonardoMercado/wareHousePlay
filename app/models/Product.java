@@ -90,6 +90,9 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+    public boolean existeProducto(){
+        return false;
+    }
     //------------------------------------------------------------------------------------------------------
 
     //-----ToString----------------------------------------------------------------------------------------
