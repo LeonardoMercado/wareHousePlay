@@ -9,6 +9,7 @@ GET     /hello                      controllers.HomeController.hello(name: Strin
 # For project:
 GET     /products                   controllers.Products.list()
 GET     /products/new               controllers.Products.newProduct()
+GET     /products/edit/:ean         controllers.Products.editProduct(ean: String)
 GET     /products/:ean              controllers.Products.details(ean: String)
 GET     /testTODO                   controllers.Products.todo(request: Request)
 + nocsrf

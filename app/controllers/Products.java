@@ -49,6 +49,16 @@ public class Products extends Controller {
             return redirect(routes.Products.todo());
         }
     }
+
+    public Result editProduct(String ean){
+        Product producto = Product.findByEan(ean);
+        if(producto!=null){
+            return ok(details.render("Detalle del producto",productoForm.fill(producto), messagesApi.preferred(idioma)));
+        }else{
+            return notFound(productNotFound.render(ean));
+        }
+    }
+
     public Result save(Http.Request request){
         Form<Product> boundForm = productoForm.bindFromRequest(request);
         if(boundForm.hasErrors()){
