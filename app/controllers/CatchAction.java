@@ -1,10 +1,8 @@
 package controllers;
 
-import play.libs.F;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
-import scala.concurrent.Promise;
 import utils.ExceptionMailer;
 
 import java.util.concurrent.CompletionStage;

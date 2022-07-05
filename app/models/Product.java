@@ -3,15 +3,15 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 import play.data.validation.Constraints;
+import play.mvc.PathBindable;
 
-import javax.validation.Constraint;
 
 /**
  * Clase para instanciar objetos tipo producto
  * @author leonardo
  * @param
  */
-public class Product {
+public class Product implements PathBindable<Product> {
     //-----Atributos----------------------------------------------------------------------------------------
     // De clase:
     private static List<Product> products;
@@ -40,7 +40,7 @@ public class Product {
     }
     //------------------------------------------------------------------------------------------------------
 
-    //----METODOS-------------------------------------------------------------------------------------------
+    //----METODOS-----------------------------------------------------------------------------------------
     public static List<Product> findAll(){
         return new ArrayList<Product>(products);
     }
@@ -95,6 +95,7 @@ public class Product {
     }
     //------------------------------------------------------------------------------------------------------
 
+    // Métodos Sobreecritos:
     //-----ToString----------------------------------------------------------------------------------------
     @Override
     public String toString() {
@@ -102,6 +103,28 @@ public class Product {
                 "ean= " + ean + '\n' +
                 "name= " + name + '\n' +
                 "description= " + description + '\n';
+    }
+
+    @Override
+    public Product bind(String key, String txt) {
+        Product product = Product.findByEan(txt);
+        if(product!=null){
+            return findByEan(txt);
+        }else{
+            Product product1 = new Product();
+            product1.setEan(txt);
+            return product1;
+        }
+    }
+
+    @Override
+    public String unbind(String key) {
+        return this.ean;
+    }
+
+    @Override
+    public String javascriptUnbind() {
+        return this.ean;
     }
     //------------------------------------------------------------------------------------------------------
 }

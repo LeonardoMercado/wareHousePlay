@@ -50,12 +50,12 @@ public class Products extends Controller {
         }
     }
 
-    public Result editProduct(String ean){
-        Product producto = Product.findByEan(ean);
-        if(producto!=null){
-            return ok(details.render("Detalle del producto",productoForm.fill(producto), messagesApi.preferred(idioma)));
+    public Result editProduct(Product product){
+        Form<Product> filledForm = productoForm.fill(product);
+        if(filledForm.get().getName()!=null){
+            return ok(details.render("Detalle del producto",filledForm, messagesApi.preferred(idioma)));
         }else{
-            return notFound(productNotFound.render(ean));
+            return notFound(productNotFound.render(filledForm.get().getEan()));
         }
     }
 
